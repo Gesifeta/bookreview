@@ -12,7 +12,7 @@ app.use(session({
     saveUninitialized: true
 }));
 app.use("/", public_users);
-app.use("/", protected_users);
+app.use("/", auth, protected_users);
 
 app.listen(3000, () => {
     console.log("Server is running on port 3000");

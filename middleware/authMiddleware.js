@@ -4,7 +4,10 @@ export const auth = (req, res, next) => {
 
     if (req.session.authorization) {
         const token = req.session.authorization['authToken'];
+        const email = req.session.authorization['email'];
+
         if (verifyToken(token)) {
+            req.user = email.split('@')[0];
             next();
         }
         else {
